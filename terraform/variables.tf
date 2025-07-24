@@ -18,3 +18,5 @@ variable "image_id" {
 variable "template_id" {
   type = number
 }
+
+

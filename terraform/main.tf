@@ -1,3 +1,12 @@
+terraform {
+  required_providers {
+    opennebula = {
+      source  = "OpenNebula/opennebula"
+      version = "1.0.1"  # Or the latest supported version
+    }
+  }
+}
+
 provider "opennebula" {
   endpoint = var.endpoint
   username = var.username
@@ -12,10 +21,12 @@ resource "opennebula_virtual_machine" "vm" {
   image_id    = var.image_id
   template_id = var.template_id
 
-  context = {
-    NETWORK        = "YES"
-    SSH_PUBLIC_KEY = file("~/.ssh/id_rsa.pub")
-  }
+  extra_template = <<EOF
+CONTEXT=[
+  NETWORK="YES",
+  SSH_PUBLIC_KEY="${file("~/.ssh/id_rsa.pub")}"
+]
+EOF
 }
 
 output "vm_ip" {
