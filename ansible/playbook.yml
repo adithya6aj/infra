@@ -1,0 +1,5 @@
+- name: Configure OpenNebula VM
+  hosts: opennebula_vm
+  become: true
+  roles:
+    - dummy_role

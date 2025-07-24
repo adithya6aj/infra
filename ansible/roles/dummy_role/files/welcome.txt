@@ -1,0 +1,2 @@
+Welcome to your OpenNebula VM!
+Provisioned with Terraform and configured with Ansible.

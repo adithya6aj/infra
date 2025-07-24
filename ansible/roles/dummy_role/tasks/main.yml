@@ -1,0 +1,12 @@
+- name: Install packages
+  apt:
+    name: "{{ item }}"
+    update_cache: yes
+  loop:
+    - htop
+    - git
+
+- name: Copy welcome message
+  copy:
+    src: welcome.txt
+    dest: /etc/motd
